@@ -2,10 +2,40 @@
 //
 
 #include <iostream>
+#include <map>
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::string str("Hello World!");
+    for (std::string::size_type i = 0, len = str.size(); i < len; ++i) {
+        std::cout << str[i] << " ";
+    }
+    std::cout << std::endl;
+
+    //return 0;
+
+    std::map<std::string, int> letterMap
+    {
+        //{"a", 3}, {"f", 2}, {"h", 7}
+    };
+    std::string asd;
+    for (std::string::size_type i = 0, len = str.size(); i < len; ++i) {
+        asd = str[i];
+        try
+        {
+            letterMap.at(asd)++;
+            //std::cout << letterMap.count(&ch);
+        }
+        catch (std::out_of_range error)
+        {
+            std::cout << "Exception\t" << str[i] << "\n";
+            letterMap[asd] = 1;
+        }
+    }
+
+
+    for (const auto& elem : letterMap)
+        std::cout << elem.first << ": " << elem.second << std::endl;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
