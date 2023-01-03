@@ -3,39 +3,46 @@
 
 #include <iostream>
 #include <map>
+#include <string>
 
 int main()
 {
-    std::string str("Hello World!");
-    for (std::string::size_type i = 0, len = str.size(); i < len; ++i) {
-        std::cout << str[i] << " ";
-    }
-    std::cout << std::endl;
+    //Ввод данных для 
+    std::cout << "[IN]: ";
+    std::string inputPhrase;
+    std::getline(std::cin, inputPhrase);
+    
+    std::map<std::string, int> letterMap;
+    std::multimap<int, std::string> letterMultiMap;
 
-    //return 0;
-
-    std::map<std::string, int> letterMap
-    {
-        //{"a", 3}, {"f", 2}, {"h", 7}
-    };
-    std::string asd;
-    for (std::string::size_type i = 0, len = str.size(); i < len; ++i) {
-        asd = str[i];
+    // Добавляем элемент в map
+    // Если элемент присутствует, то увеличиваем его счетчик на 1
+    std::string tmpChar;
+    for (std::string::size_type i = 0, len = inputPhrase.size(); i < len; ++i) {
+        tmpChar = inputPhrase[i];
         try
         {
-            letterMap.at(asd)++;
-            //std::cout << letterMap.count(&ch);
+            letterMap.at(tmpChar)++;
         }
         catch (std::out_of_range error)
         {
-            std::cout << "Exception\t" << str[i] << "\n";
-            letterMap[asd] = 1;
+            letterMap[tmpChar] = 1;
         }
     }
 
-
+    // Записываем map в multimap с ротацией key-value
     for (const auto& elem : letterMap)
-        std::cout << elem.first << ": " << elem.second << std::endl;
+    {
+        letterMultiMap.insert(std::make_pair(elem.second, elem.first));
+    }
+
+    // Вывод multimap в обратном порядке
+    std::cout << "[OUT]:\n";
+    for (auto it = letterMultiMap.rbegin(); it != letterMultiMap.rend(); ++it)
+    {
+        std::cout << it->first << ": " << it->second << std::endl;
+    }
+
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
