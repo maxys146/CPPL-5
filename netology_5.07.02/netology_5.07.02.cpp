@@ -2,10 +2,32 @@
 //
 
 #include <iostream>
+#include <set>
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    int numbersCount, numberIn;
+    std::set<int> numberSet;
+    //Ввод данных для 
+    std::cout << "[IN]:\n";
+    std::cin >> numbersCount;
+    for (int i = 0; i < numbersCount; i++)
+    {
+        std::cin >> numberIn;
+        numberSet.insert(numberIn);
+    }
+
+    std::cout << std::endl;
+    std::cout << "[OUT]:\n";
+
+    for (auto it = numberSet.rbegin(); it != numberSet.rend(); ++it)
+    {
+        std::cout << *it  << std::endl;
+    }
+
+
+    return 0;
+
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
