@@ -7,28 +7,27 @@
 
 int main()
 {
+    setlocale(LC_ALL, "Russian");
     std::vector<int> nums = { 4, 7, 9, 14, 12 };
 
     auto print = [](const int& n) {
         std::cout << " " << n;
     };
 
-    std::cout << "before:";
+    std::cout << "Входные данные:";
     std::for_each(nums.cbegin(), nums.cend(), print);
     std::cout << '\n';
 
-    std::for_each(nums.begin(), nums.end(), [](int& n) {
+    auto multiplyVector = [](int& n) mutable {
         if (n % 2 != 0)
         {
             n = n * 3;
         }
-        }
-    );
+    };
 
-
-    std::cout << "after: ";
+    std::for_each(nums.begin(), nums.end(), multiplyVector);
+    std::cout << "Выходные данные: ";
     std::for_each(nums.cbegin(), nums.cend(), print);
-
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
