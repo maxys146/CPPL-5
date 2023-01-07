@@ -2,10 +2,33 @@
 //
 
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::vector<int> nums = { 4, 7, 9, 14, 12 };
+
+    auto print = [](const int& n) {
+        std::cout << " " << n;
+    };
+
+    std::cout << "before:";
+    std::for_each(nums.cbegin(), nums.cend(), print);
+    std::cout << '\n';
+
+    std::for_each(nums.begin(), nums.end(), [](int& n) {
+        if (n % 2 != 0)
+        {
+            n = n * 3;
+        }
+        }
+    );
+
+
+    std::cout << "after: ";
+    std::for_each(nums.cbegin(), nums.cend(), print);
+
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
