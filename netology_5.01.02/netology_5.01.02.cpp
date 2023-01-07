@@ -4,24 +4,21 @@
 #include <iostream>
 #include <variant>
 #include <vector>
+#include <algorithm>
 
 std::variant<int, std::string, std::vector<int>> get_variant() {
 	std::srand(std::time(nullptr));
 	int random_variable = std::rand() % 3;
-
 	std::variant<int, std::string, std::vector<int>> result;
 	switch (random_variable)
 	{
 	case 0:
-		std::cout << "/n0: ";
 		result = 5;
 		break;
 	case 1:
-		std::cout << "/n1: ";
 		result = "string";
 		break;
 	case 2:
-		std::cout << "/n2: ";
 		result = std::vector<int>{ 1, 2, 3, 4, 5 };
 		break;
 	default:
@@ -32,7 +29,30 @@ std::variant<int, std::string, std::vector<int>> get_variant() {
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	auto var = get_variant();
+	if (std::holds_alternative<int>(var))
+	{
+		std::cout << "Integer: " << (std::get<int>(var) * 2);
+	}
+	else if (std::holds_alternative<std::string>(var))
+	{
+		std::cout << "String: " << std::get<std::string>(var);
+	}
+	else if (std::holds_alternative<std::vector<int>>(var))
+	{
+		auto print = [](const int& n) {
+			std::cout << " " << n;
+		};
+		std::vector nums = std::get<std::vector<int>>(var);
+		std::cout << "Vector: ";
+		std::for_each(nums.cbegin(), nums.cend(), print);
+	}
+	else
+	{
+		std::cout << "Error";
+		return 1;
+	}
+	return 0;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
