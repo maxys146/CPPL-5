@@ -9,6 +9,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "netology_5.07.01", "netolog
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "netology_5.07.02", "netology_5.07.02\netology_5.07.02.vcxproj", "{6AE8FAB8-94D9-4E4A-A16E-B722519FF1C1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "netology_5.01.01", "netology_5.01.01\netology_5.01.01.vcxproj", "{00A3EAFA-A36F-4D81-A5D0-A2368A9C1BA3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "netology_5.01.02", "netology_5.01.02\netology_5.01.02.vcxproj", "{14695479-9557-4B39-A5EB-934C0A36FB54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +45,22 @@ Global
 		{6AE8FAB8-94D9-4E4A-A16E-B722519FF1C1}.Release|x64.Build.0 = Release|x64
 		{6AE8FAB8-94D9-4E4A-A16E-B722519FF1C1}.Release|x86.ActiveCfg = Release|Win32
 		{6AE8FAB8-94D9-4E4A-A16E-B722519FF1C1}.Release|x86.Build.0 = Release|Win32
+		{00A3EAFA-A36F-4D81-A5D0-A2368A9C1BA3}.Debug|x64.ActiveCfg = Debug|x64
+		{00A3EAFA-A36F-4D81-A5D0-A2368A9C1BA3}.Debug|x64.Build.0 = Debug|x64
+		{00A3EAFA-A36F-4D81-A5D0-A2368A9C1BA3}.Debug|x86.ActiveCfg = Debug|Win32
+		{00A3EAFA-A36F-4D81-A5D0-A2368A9C1BA3}.Debug|x86.Build.0 = Debug|Win32
+		{00A3EAFA-A36F-4D81-A5D0-A2368A9C1BA3}.Release|x64.ActiveCfg = Release|x64
+		{00A3EAFA-A36F-4D81-A5D0-A2368A9C1BA3}.Release|x64.Build.0 = Release|x64
+		{00A3EAFA-A36F-4D81-A5D0-A2368A9C1BA3}.Release|x86.ActiveCfg = Release|Win32
+		{00A3EAFA-A36F-4D81-A5D0-A2368A9C1BA3}.Release|x86.Build.0 = Release|Win32
+		{14695479-9557-4B39-A5EB-934C0A36FB54}.Debug|x64.ActiveCfg = Debug|x64
+		{14695479-9557-4B39-A5EB-934C0A36FB54}.Debug|x64.Build.0 = Debug|x64
+		{14695479-9557-4B39-A5EB-934C0A36FB54}.Debug|x86.ActiveCfg = Debug|Win32
+		{14695479-9557-4B39-A5EB-934C0A36FB54}.Debug|x86.Build.0 = Debug|Win32
+		{14695479-9557-4B39-A5EB-934C0A36FB54}.Release|x64.ActiveCfg = Release|x64
+		{14695479-9557-4B39-A5EB-934C0A36FB54}.Release|x64.Build.0 = Release|x64
+		{14695479-9557-4B39-A5EB-934C0A36FB54}.Release|x86.ActiveCfg = Release|Win32
+		{14695479-9557-4B39-A5EB-934C0A36FB54}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
