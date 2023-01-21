@@ -20,7 +20,7 @@ public:
         }
         else
         {
-            throw std::exception("Wrong index!");
+            //throw std::exception("Wrong index!");
         }
     }
     void add_element(int value) {
@@ -32,9 +32,21 @@ public:
         }
     }
 
-    ~smart_array() {
-        delete[] arr;
+    smart_array &operator=(smart_array& sm)
+    {
+        std::cout << "Присваивание\n";
+        std::cout << sm.get_element(1);
+        std::cout << std::endl;
+        std::cout << this->get_element(1);
+        std::cout << std::endl;
+        return *this;
     }
+
+    ~smart_array() {
+        std::cout << "Деструктор " << arr << "\n";
+        delete[] this->arr;
+    }
+
 
 };
 
@@ -43,26 +55,26 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
 
-    try {
-        smart_array arr(5);
+    smart_array arr(5);
+    arr.add_element(1);
+    arr.add_element(4);
+    arr.add_element(155);
+    arr.add_element(22);
+    arr.add_element(33);
 
-        arr.add_element(1);
-        arr.add_element(4);
-        arr.add_element(155);
-        arr.add_element(14);
-        arr.add_element(15);
-        arr.add_element(54); // Проверка что 6 элемент не добавляется.
+    smart_array new_array(2);
+    new_array.add_element(44);
+    new_array.add_element(34);
 
-        for (int i = 0; i < 6; i++) { // Проверка что срабатывает exception для 6 элемента
-            std::cout << "arr[" << i << "] = " << arr.get_element(i) << "\n";
-        }
+    arr = new_array;
+    //new_array = arr;
+    for (int i = 0; i < 5; i++) { // Проверка что срабатывает exception для 6 элемента
+        std::cout << "arr[" << i << "] = " << arr.get_element(i) << "\n";
     }
-    catch (const std::exception& ex) {
-        std::cout << "Exception: " << ex.what() << std::endl;
+    for (int i = 0; i < 2; i++) { // Проверка что срабатывает exception для 6 элемента
+        std::cout << "new_array[" << i << "] = " << new_array.get_element(i) << "\n";
     }
-
-
-
+    return 0;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
