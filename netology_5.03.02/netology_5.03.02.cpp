@@ -34,16 +34,21 @@ public:
 
     smart_array &operator=(smart_array& sm)
     {
-        std::cout << "Присваивание\n";
-        std::cout << sm.get_element(1);
-        std::cout << std::endl;
-        std::cout << this->get_element(1);
-        std::cout << std::endl;
+        // Удаляем массив и создаем новый
+        delete this->arr;
+        this->arr = new int[sm.size]();
+
+        // Цикл для копирования данных
+        for (int i = 0; i < sm.size; i++) {
+            this->add_element(sm.get_element(i));
+        }
+
+
         return *this;
     }
 
     ~smart_array() {
-        std::cout << "Деструктор " << arr << "\n";
+        //std::cout << "Деструктор " << arr << "\n";
         delete[] this->arr;
     }
 
@@ -66,14 +71,25 @@ int main()
     new_array.add_element(44);
     new_array.add_element(34);
 
-    arr = new_array;
-    //new_array = arr;
-    for (int i = 0; i < 5; i++) { // Проверка что срабатывает exception для 6 элемента
+    std::cout << "До присваивания." << std::endl;
+    for (int i = 0; i < 5; i++) {
         std::cout << "arr[" << i << "] = " << arr.get_element(i) << "\n";
     }
-    for (int i = 0; i < 2; i++) { // Проверка что срабатывает exception для 6 элемента
+    for (int i = 0; i < 2; i++) {
         std::cout << "new_array[" << i << "] = " << new_array.get_element(i) << "\n";
     }
+
+
+    arr = new_array;
+
+    std::cout << "После присваивания." << std::endl;
+    for (int i = 0; i < 2; i++) {
+        std::cout << "arr[" << i << "] = " << arr.get_element(i) << "\n";
+    }
+    for (int i = 0; i < 2; i++) {
+        std::cout << "new_array[" << i << "] = " << new_array.get_element(i) << "\n";
+    }
+
     return 0;
 }
 
