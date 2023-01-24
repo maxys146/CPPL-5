@@ -5,9 +5,10 @@
 #include <exception>
 
 class smart_array {
-public:
+private:
     int* arr;
     int size;
+public:
     smart_array(const int size) {
         this->size = size;
         int* constructorArray = new int[size]();
