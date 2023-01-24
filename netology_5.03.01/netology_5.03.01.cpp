@@ -2,7 +2,6 @@
 //
 
 #include <iostream>
-#include <exception>
 
 class smart_array {
 private:
@@ -21,7 +20,7 @@ public:
         }
         else
         {
-            throw std::exception("Wrong index!");
+            throw std::runtime_error("Wrong index!");
         }
     }
     void add_element(int value) {
