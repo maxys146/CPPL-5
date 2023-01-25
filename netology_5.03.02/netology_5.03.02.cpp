@@ -7,6 +7,7 @@ class smart_array {
 private:
     int* arr;
     int size;
+    int position = 0;
 public:
     smart_array(const int size) {
         this->size = size;
@@ -24,11 +25,14 @@ public:
         }
     }
     void add_element(int value) {
-        for (int i = 0; i < size; i++) {
-            if (arr[i] == 0) {
-                this->arr[i] = value;
-                break;
-            }
+        if (position < size)
+        {
+            arr[position] = value;
+            position++;
+        }
+        else
+        {
+            throw std::runtime_error("Can't add element!");
         }
     }
 
@@ -39,6 +43,7 @@ public:
         this->arr = new int[sm.size]();
 
         // Цикл для копирования данных
+        position = 0;
         for (int i = 0; i < sm.size; i++) {
             this->add_element(sm.get_element(i));
         }

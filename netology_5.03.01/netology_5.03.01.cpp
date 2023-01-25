@@ -7,6 +7,7 @@ class smart_array {
 private:
     int* arr;
     int size;
+    int position = 0;
 public:
     smart_array(const int size) {
         this->size = size;
@@ -24,11 +25,14 @@ public:
         }
     }
     void add_element(int value) {
-        for (int i = 0; i < size; i++) {
-            if (arr[i] == 0) {
-                this->arr[i] = value;
-                break;
-            }
+        if (position < size)
+        {
+            arr[position] = value;
+            position++;
+        }
+        else
+        {
+            throw std::runtime_error("Can't add element!");
         }
     }
     
@@ -51,7 +55,7 @@ int main()
         arr.add_element(155);
         arr.add_element(14);
         arr.add_element(15);
-        arr.add_element(54); // Проверка что 6 элемент не добавляется.
+        //arr.add_element(54); // Раскомментировать для проверки что 6 элемент не добавляется.
 
         for (int i = 0; i < 6; i++) { // Проверка что срабатывает exception для 6 элемента
             std::cout << "arr[" << i << "] = " << arr.get_element(i) << "\n";
