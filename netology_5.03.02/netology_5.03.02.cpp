@@ -4,7 +4,7 @@
 #include <iostream>
 
 class smart_array {
-public:
+private:
     int* arr;
     int size;
 public:
