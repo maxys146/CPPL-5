@@ -14,6 +14,18 @@ public:
         int* constructorArray = new int[size]();
         arr = constructorArray;
     }
+    smart_array(const smart_array& sm)
+    {
+        int* constructorArray = new int[sm.size]();
+        arr = constructorArray;
+        this->position = 0;
+        this->size = sm.size;
+        // Цикл для копирования данных
+        for (int i = 0; i < sm.size; i++) {
+            this->add_element(sm.arr[i]);
+        }
+    }
+
     int get_element(int number) {
         if (number >= 0 and number < this->size)
         {
@@ -32,7 +44,7 @@ public:
         }
         else
         {
-            throw std::runtime_error("Can't add element!");
+            //throw std::runtime_error("Can't add element!");
         }
     }
 
@@ -49,6 +61,10 @@ public:
             for (int i = 0; i < sm.size; i++) {
                 this->add_element(sm.get_element(i));
             }
+        }
+        else
+        {
+            //throw std::runtime_error("Can't copy to myself!");
         }
         return *this;
     }
@@ -73,27 +89,39 @@ int main()
     arr.add_element(22);
     arr.add_element(33);
 
-    smart_array new_array(2);
-    new_array.add_element(44);
-    new_array.add_element(34);
-    arr = arr;
+    smart_array arr2(2);
+    arr2.add_element(44);
+    arr2.add_element(34);
+
+    arr = arr; // Проверка невозможности копирования самого в себя.
+
+    smart_array new_arr(arr);
+
+    std::cout << "Копирование arr в new_arr" << std::endl;
+    for (int i = 0; i < 5; i++) {
+        std::cout << "arr[" << i << "] = " << arr.get_element(i) << "\n";
+    }
+    for (int i = 0; i < 5; i++) {
+        std::cout << "new_arr[" << i << "] = " << new_arr.get_element(i) << "\n";
+    }
+
     std::cout << "До присваивания." << std::endl;
     for (int i = 0; i < 5; i++) {
         std::cout << "arr[" << i << "] = " << arr.get_element(i) << "\n";
     }
     for (int i = 0; i < 2; i++) {
-        std::cout << "new_array[" << i << "] = " << new_array.get_element(i) << "\n";
+        std::cout << "arr2[" << i << "] = " << arr2.get_element(i) << "\n";
     }
 
 
-    arr = new_array;
+    arr = arr2;
 
     std::cout << "После присваивания." << std::endl;
     for (int i = 0; i < 2; i++) {
         std::cout << "arr[" << i << "] = " << arr.get_element(i) << "\n";
     }
     for (int i = 0; i < 2; i++) {
-        std::cout << "new_array[" << i << "] = " << new_array.get_element(i) << "\n";
+        std::cout << "arr2[" << i << "] = " << arr2.get_element(i) << "\n";
     }
 
     return 0;
