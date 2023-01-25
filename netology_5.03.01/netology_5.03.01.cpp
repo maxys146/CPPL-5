@@ -35,6 +35,8 @@ public:
             throw std::runtime_error("Can't add element!");
         }
     }
+    smart_array(const smart_array&) = delete;
+    smart_array& operator=(const smart_array&) = delete;
     
     ~smart_array() {
         delete[] arr;
@@ -46,7 +48,7 @@ public:
 int main()
 {
     setlocale(LC_ALL, "Russian");
-    
+
     try {
         smart_array arr(5);
 
