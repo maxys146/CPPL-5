@@ -38,17 +38,18 @@ public:
 
     smart_array &operator=(smart_array& sm)
     {
-        // Удаляем массив и создаем новый
-        delete this->arr;
-        this->arr = new int[sm.size]();
+        if (&sm != this)
+        {
+            // Удаляем массив и создаем новый
+            delete this->arr;
+            this->arr = new int[sm.size]();
 
-        // Цикл для копирования данных
-        position = 0;
-        for (int i = 0; i < sm.size; i++) {
-            this->add_element(sm.get_element(i));
+            // Цикл для копирования данных
+            position = 0;
+            for (int i = 0; i < sm.size; i++) {
+                this->add_element(sm.get_element(i));
+            }
         }
-
-
         return *this;
     }
 
@@ -75,7 +76,7 @@ int main()
     smart_array new_array(2);
     new_array.add_element(44);
     new_array.add_element(34);
-
+    arr = arr;
     std::cout << "До присваивания." << std::endl;
     for (int i = 0; i < 5; i++) {
         std::cout << "arr[" << i << "] = " << arr.get_element(i) << "\n";
