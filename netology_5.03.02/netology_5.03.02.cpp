@@ -21,7 +21,7 @@ public:
         this->position = 0;
         this->size = sm.size;
         // Цикл для копирования данных
-        for (int i = 0; i < sm.size; i++) {
+        for (int i = 0; i < sm.position; i++) {
             this->add_element(sm.arr[i]);
         }
     }
@@ -58,7 +58,7 @@ public:
 
             // Цикл для копирования данных
             position = 0;
-            for (int i = 0; i < sm.size; i++) {
+            for (int i = 0; i < sm.position; i++) {
                 this->add_element(sm.get_element(i));
             }
         }
