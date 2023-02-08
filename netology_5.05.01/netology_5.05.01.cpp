@@ -2,10 +2,43 @@
 //
 
 #include <iostream>
+#include <vector>
+
+template <class T>
+T my_square(T a)
+{
+    return a * a;
+}
+
+template <class T>
+std::vector<T> my_square(std::vector<T> a)
+{
+        std::cout << "Vector\n";
+    for (int element : a)
+    {
+
+        element = element * element;
+        std::cout << element << "\n";
+
+    }
+    return a;
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::vector <int> vector = { 1, 2, 3 };
+    std::cout << my_square(3) << "\n";
+    std::cout  << "Int\n";
+    for (int element : vector)
+    {
+        std::cout << element << "\n";
+    }
+    std::vector <int> vector_new = my_square(vector);
+    std::cout << "Vector out\n";
+    for (int element : vector_new)
+    {
+        std::cout << element << "\n";
+    }
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
