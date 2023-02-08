@@ -13,31 +13,33 @@ T my_square(T a)
 template <class T>
 std::vector<T> my_square(std::vector<T> a)
 {
-        std::cout << "Vector\n";
-    for (int element : a)
+    for (int i = 0; i != a.size(); ++i)
     {
-
-        element = element * element;
-        std::cout << element << "\n";
-
+        a[i] = a[i] * a[i];
     }
     return a;
 }
 
 int main()
 {
-    std::vector <int> vector = { 1, 2, 3 };
-    std::cout << my_square(3) << "\n";
-    std::cout  << "Int\n";
-    for (int element : vector)
+    int in1 = 4;
+    std::vector <int> in2 = { -1, 4, 8 };
+
+    std::cout  << "[IN]: " << in1 << "\n";
+    std::cout << "[OUT]: " << my_square(in1) << "\n";
+    
+
+    std::cout << "[IN]: ";
+    for (int element : in2)
     {
-        std::cout << element << "\n";
+        std::cout << element << " ";
     }
-    std::vector <int> vector_new = my_square(vector);
-    std::cout << "Vector out\n";
+    std::cout << "\n";
+    std::vector <int> vector_new = my_square(in2);
+    std::cout << "[OUT]: ";
     for (int element : vector_new)
     {
-        std::cout << element << "\n";
+        std::cout << element << " ";
     }
 }
 
